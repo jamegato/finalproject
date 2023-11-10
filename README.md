@@ -6,10 +6,10 @@
 
 **Volcano Dance**: In Volcano Dance, the player starts out as a small miner trapped on top of a volcano. The goal is to survive as long as possible and rack up as many points as you grow bigger by consuming food for points. 
 ## Phase 1: 
-- [ ] Miner Exists: There is a miner on the screen
-- [ ] Miner Moves: The miner moves left or right whenever the arrow keys are pressed 
-- [ ] Spawning Food: Food will randomly spawn inside of the boundaries
-- [ ] Screen Limits: The miner cannot be moved offscreen, I want him to stop when he hits the end of the screen like a collision zone
+- [X] Miner Exists: There is a miner on the screen
+- [X] Miner Moves: The miner moves left or right whenever the arrow keys are pressed 
+- [X] Spawning Food: Food will randomly spawn inside of the boundaries
+- [X] Screen Limits: The miner cannot be moved offscreen, I want him to stop when he hits the end of the screen like a collision zone
 
 
 ## Phase 2: 
