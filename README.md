@@ -14,9 +14,9 @@
 
 ## Phase 2: 
 - [ ] Growth: When the miner consumes food he will grow in size
-- [ ] Lava Spawning: Lava will spawn underneath the miner inside of the boundaries
-- [ ] Lava despawning: Lava should disappear after 5 seconds on screen
-- [ ] Miner Hurt: When the miner steps on the lava they should get hurt and lose a heart
+- [ ] Rocks Spawning: Rocks will spawn in the sky and on top of the miner inside of the boundaries
+- [ ] Rocks despawning: Rocks should disappear after hitting the ground
+- [ ] Miner Hurt: When the miner gets hit by a rock they should get hurt and lose a heart
 - [ ] Timer: The timer should be displayed on the screen on startup
 
 
@@ -24,6 +24,6 @@
 - [ ] Show Stats: The current score and number of lives are shown in the game on the top right corner of the screen.
 - [ ] Play Button: A play button and home screen should be displayed that takes you into the game 
 - [ ] Power Ups: Power Ups should spawn around that increase player speed and also give them more health 
-- [ ]  Game Win r: A message is displayed when the player runs out of time , or some other visual indicator that the player has Won.
+- [ ] Game Win r: A message is displayed when the player runs out of time , or some other visual indicator that the player has Won.
 - [ ] Game Over: A message is displayed when the player runs out of lives, or some other visual indicator that the player has lost.
 - [ ] Show Stats: The current score and number of lives are shown in the game
