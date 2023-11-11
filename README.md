@@ -4,7 +4,7 @@
 
 # Game Idea
 
-**Volcano Dance**: In Volcano Dance, the player starts out as a small miner trapped on top of a volcano. The goal is to survive as long as possible and rack up as many points as you grow bigger by consuming food for points. 
+**Miner Dance**: In Volcano Dance, the player starts out as a small miner trapped on top of a volcano. The goal is to survive as long as possible and rack up as many points as you grow bigger by consuming food for points. 
 ## Phase 1: 
 - [X] Miner Exists: There is a miner on the screen
 - [X] Miner Moves: The miner moves left or right whenever the arrow keys are pressed 
