@@ -40,7 +40,7 @@ def create_miner() -> DesignerObject:
 
 def bounce_miner(world: World):
     """
-    Sets the boundaries of the miner, and prevents him by going off screen by introducimh
+    Sets the boundaries of the miner, and prevents him by going off screen by introducing
     a bounce feature to block him off
     """
     if world.miner.x > get_width():
@@ -93,7 +93,7 @@ def make_foods(world: World):
     around in the game, restricting the amount to 2 max,
     also applying a 1/10 chance for it to spawn
     """
-    not_too_many_foods = len(world.foods) < 2
+    not_too_many_foods = len(world.foods) < 3
     random_chance = randint(1, 10) == 10
     if (not_too_many_foods and random_chance):
         world.foods.append(create_foods())
