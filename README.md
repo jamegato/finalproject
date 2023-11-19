@@ -2,7 +2,8 @@
 |---------------|-------------------|
 | James Gatonye | jamegato@udel.edu |
 # Game Videos
-Milestone 1: https://youtu.be/mRY9o0grM6I
+- Milestone 1: https://youtu.be/mRY9o0grM6I
+- Milestone 2: https://youtu.be/z4aX2MOs_PU
 # Game Idea
 
 **Miner Dance**: In Miner Dance, the player starts out as a small miner trapped on top of a volcano. The goal is to survive as long as possible and rack up as many points as you grow bigger by consuming food for points. 
