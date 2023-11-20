@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from designer import *
 from random import randint
 
-MINER_SPEED = 60
+MINER_SPEED = 50
 STARTING_TIME = 60
 ROCK_MOVEMENT = 5
 
@@ -14,6 +14,7 @@ class World:
     food: list[DesignerObject]
     coin: list[DesignerObject]
     rocks: list[DesignerObject]
+    mushroom: list[DesignerObject]
     rock_movement: int
     score: int
     score_counter: list[DesignerObject]
@@ -25,7 +26,7 @@ class World:
 
 def create_world() -> World:
     "Creates the world containing everything"
-    return World(create_miner(), MINER_SPEED, [], [], [],
+    return World(create_miner(), MINER_SPEED, [], [], [], [],
                  ROCK_MOVEMENT, 0, text("black", "", 40, get_width() / 2, 30, font_name='Arial'),
                  display_lives([create_heart(), create_heart(), create_heart()])
                  , 0, STARTING_TIME, text("black", "", 30, get_width() / 2, 70, font_name='Arial'))
@@ -59,7 +60,7 @@ def head_left(world: World):
     also controlls how fast he moves by having
     the * 2 next to the speed
     """
-    world.miner_speed = -MINER_SPEED
+    world.miner_speed = -MINER_SPEED * 2
     world.miner.x += world.miner_speed
     world.miner.flip_x = False
 
@@ -69,7 +70,7 @@ def head_right(world: World):
     also controlls how fast he moves by having
     the * 2 next to the speed
     """
-    world.miner_speed = MINER_SPEED
+    world.miner_speed = MINER_SPEED * 2
     world.miner.x += world.miner_speed
     world.miner.flip_x = True
 
@@ -105,6 +106,16 @@ def create_coins() -> DesignerObject:
     coin.y = get_height() * (1 / 1.4)
     return coin
 
+def create_mushroom() -> DesignerObject:
+    """Create mushroom powerup that spawns around on the same level of
+    the miner at random intervals that can be collected
+    """
+    mushroom = emoji('mushroom')
+    mushroom.anchor = 'midbottom'
+    mushroom.x = randint(0, get_width())
+    mushroom.y = get_height() * (1 / 1.4)
+    return mushroom
+
 
 def make_foods(world: World):
     """ Controlls the amount of food being spawned
@@ -123,9 +134,19 @@ def make_coins(world: World):
     also applying a 1/300 chance for it to spawn
     """
     not_too_many_coins = len(world.coin) < 2
-    random_chance = randint(1, 300) == 1
+    random_chance = randint(1, 200) == 1
     if (not_too_many_coins and random_chance):
         world.coin.append(create_coins())
+
+def make_mushroom(world: World):
+    """ Controlls the amount of mushrooms being spawned
+    around in the game, restricting the amount to 1 max,
+    also applying a 1/300 chance for it to spawn
+    """
+    not_too_many_mushrooms = len(world.mushroom) < 1
+    random_chance = randint(1, 300) == 1
+    if (not_too_many_mushrooms and random_chance):
+        world.mushroom.append(create_mushroom())
 
 
 def eating_food(world: World):
@@ -137,8 +158,8 @@ def eating_food(world: World):
     for food in world.food:
         if colliding(food, world.miner):
             eaten_food.append(food)
-            miner.scale_x += 0.05
-            miner.scale_y += 0.05
+            miner.scale_x += 0.15
+            miner.scale_y += 0.15
     world.food = filter_from(world.food, eaten_food)
 
 
@@ -155,6 +176,19 @@ def collecting_coins(world: World):
             world.seconds += 5
     world.coin = filter_from(world.coin, collected_coins)
 
+def eating_mushroom(world: World):
+    """When the miner touches the mushroom, the miner will
+    become smaller
+    """
+    eaten_mushroom = []
+    miner = world.miner
+    for mushroom in world.mushroom:
+        if colliding(mushroom, world.miner):
+            eaten_mushroom.append(mushroom)
+            miner.scale_x -= 0.1
+            miner.scale_y -= 0.1
+    world.mushroom = filter_from(world.mushroom, eaten_mushroom)
+
 
 def create_heart() -> DesignerObject:
     "Creates the hearts displayed in the game"
@@ -169,8 +203,8 @@ def create_heart() -> DesignerObject:
 def create_rock() -> DesignerObject:
     "Creates the rocks that fall from the sky"
     rock = emoji("🪨")
-    rock.scale_x = 2
-    rock.scale_x = 2
+    rock.scale_x = 3
+    rock.scale_x = 4
     rock.x = randint(0, get_width())
     rock.y = 0
     return rock
@@ -255,13 +289,11 @@ when("updating", make_foods)
 when("updating", eating_food)
 when("updating", make_coins)
 when("updating", collecting_coins)
+when("updating", make_mushroom)
+when("updating", eating_mushroom)
 when("updating", make_rock)
 when("updating", move_rock)
 when("updating", taking_damage)
 when("updating", update_score)
 when("updating", timer_updates)
 start()
-
-
-
-

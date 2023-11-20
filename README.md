@@ -28,4 +28,4 @@
 - [ ] Game Win : A message is displayed when the player runs out of time , or some other visual indicator that the player has Won.
 - [ ] Game Over: A message is displayed when the player runs out of lives, or some other visual indicator that the player has lost.
 - [ ] Game UI: Making the Game Look Pretty!
-- [ ] Miner Control: Add a power up that makes the miner become smaller after consuming it
+- [X] Mini Mushroom: Add a power up that makes the miner become smaller after consuming it
