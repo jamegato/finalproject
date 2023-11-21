@@ -63,7 +63,7 @@ def head_left(world: World):
     """
     world.miner_speed = -MINER_SPEED * 2
     world.miner.x += world.miner_speed
-    world.miner.flip_x = False
+    world.miner.flip_x = True
 
 
 def head_right(world: World):
@@ -73,7 +73,7 @@ def head_right(world: World):
     """
     world.miner_speed = MINER_SPEED * 2
     world.miner.x += world.miner_speed
-    world.miner.flip_x = True
+    world.miner.flip_x = False
 
 
 def flip_miner(world: World, key: str):
@@ -101,7 +101,7 @@ def create_coins() -> DesignerObject:
     """Create coins that spawns around on the same level of
     the miner at random intervals that can be collected
     """
-    coin = emoji('🪙')
+    coin = image("https://tinyurl.com/4aubds8h")
     coin.anchor = 'midbottom'
     coin.x = randint(0, get_width())
     coin.y = get_height() * (1 / 1.4)
