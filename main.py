@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from designer import *
 from random import randint
-
+background_image("https://tinyurl.com/2hs2trvv")
 MINER_SPEED = 50
 STARTING_TIME = 60
 ROCK_MOVEMENT = 5
@@ -27,9 +27,9 @@ class World:
 def create_world() -> World:
     "Creates the world containing everything"
     return World(create_miner(), MINER_SPEED, [], [], [], [],
-                 ROCK_MOVEMENT, 0, text("black", "", 40, get_width() / 2, 30, font_name='Arial'),
+                ROCK_MOVEMENT, 0, text("chocolate", "", 35, get_width()/2, 40, font_name = 'Equinox'),
                  display_lives([create_heart(), create_heart(), create_heart()])
-                 , 0, STARTING_TIME, text("black", "", 30, get_width() / 2, 70, font_name='Arial'))
+                 ,0 , STARTING_TIME, text("chocolate", "", 30, get_width()/2,70, font_name = 'Equinox'))
 
 
 def create_miner() -> DesignerObject:
@@ -37,8 +37,8 @@ def create_miner() -> DesignerObject:
     Creates the miner, increases his size and also sets
     where he spawns in.
     """
-    miner = emoji("man")
-    set_scale(miner, 2.0)
+    miner = image("https://tinyurl.com/2y9wkx8y")
+    set_scale(miner, 0.5)
     miner.y = get_height() * (1 / 1.5)
     miner.flip_x = True
     return miner
@@ -89,7 +89,7 @@ def create_foods() -> DesignerObject:
     """Create food that spawns around on the same level of
     the miner at random intervals
     """
-    food = emoji('🍕')
+    food = image("https://cdn.discordapp.com/attachments/1175999821321089037/1176301105341284383/kit.png?ex=656e5ec6&is=655be9c6&hm=bb42defff64559692c61d796cebc1b23f9c23c41332c5b5d636309e35ebd40f9&")
     food.anchor = 'midbottom'
     food.x = randint(0, get_width())
     food.y = get_height() * (1 / 1.4)
@@ -110,7 +110,7 @@ def create_mushroom() -> DesignerObject:
     """Create mushroom powerup that spawns around on the same level of
     the miner at random intervals that can be collected
     """
-    mushroom = emoji('mushroom')
+    mushroom = image("https://tinyurl.com/mreke667")
     mushroom.anchor = 'midbottom'
     mushroom.x = randint(0, get_width())
     mushroom.y = get_height() * (1 / 1.4)
@@ -195,16 +195,16 @@ def create_heart() -> DesignerObject:
     hearts = emoji("♥")
     hearts.scale_y = 0.8
     hearts.scale_x = 0.8
-    hearts.y = 110
-    hearts.x = get_width() / 2 - 30
+    hearts.y = 105
+    hearts.x = get_width()/2 - 30
     return hearts
 
 
 def create_rock() -> DesignerObject:
     "Creates the rocks that fall from the sky"
-    rock = emoji("🪨")
-    rock.scale_x = 3
-    rock.scale_x = 4
+    rock = image("https://tinyurl.com/2pr2reah")
+    rock.scale_x = 1
+    rock.scale_x = 1
     rock.x = randint(0, get_width())
     rock.y = 0
     return rock
