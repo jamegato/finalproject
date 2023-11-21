@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from designer import *
 from random import randint
 background_image("https://tinyurl.com/2hs2trvv")
+
 MINER_SPEED = 50
 STARTING_TIME = 60
 ROCK_MOVEMENT = 5
