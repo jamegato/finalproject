@@ -29,3 +29,4 @@
 - [ ] Game Over: A message is displayed when the player runs out of lives, or some other visual indicator that the player has lost.
 - [X] Game UI: Making the Game Look Pretty!
 - [X] Mini Mushroom: Add a power up that makes the miner become smaller after consuming it
+- [X] Difficulty Ramp Up: the game becomes harder as time progresses
