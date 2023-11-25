@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from designer import *
 from random import randint
-background_image("Photos/background.png")
+
 
 MINER_SPEED = 50
 STARTING_TIME = 60
@@ -9,7 +9,22 @@ ROCK_MOVEMENT = 5
 ROCK_COUNTER = 3
 
 @dataclass
+class Button:
+    background: DesignerObject
+    border: DesignerObject
+    label: DesignerObject
+
+@dataclass
+class TitleScreen:
+    background: DesignerObject
+    header: DesignerObject
+    start_button: Button
+    quit_button: Button
+    author_name: DesignerObject
+
+@dataclass
 class World:
+    background: DesignerObject
     miner: DesignerObject
     miner_speed: int
     food: list[DesignerObject]
@@ -25,6 +40,51 @@ class World:
     timer: list[DesignerObject]
     rock_count: int
 
+def make_button(message: str, x: int, y: int) -> Button:
+    """
+    Creates a button.
+
+    Args:
+        message (str): Message on the button.
+        x (int): The x position of the button.
+        y (int): The y position of the button.
+
+    Returns:
+        Button: A collection of designer objects that forms a button.
+    """
+    horizontal_padding = 40
+    vertical_padding = 14
+    label = text("chocolate", message, 30, x, y, layer = 'top', font_name = 'Equinox')
+    return Button(rectangle("lemonchiffon", label.width + horizontal_padding, label.height + vertical_padding, x, y),
+                  rectangle("chocolate", label.width + horizontal_padding, label.height + vertical_padding, x, y, 1),
+                  label)
+
+def create_title_screen() -> TitleScreen:
+    """
+    Creates the title screen.
+
+    Returns:
+       TitleScreen: Composed of a background image, header, and two buttons.
+    """
+    return TitleScreen(background_image("Photos/miner_bg.png"),
+                    text("chocolate", "Miner Dance", 60, get_width()/2, 105, font_name = 'Equinox'),
+                    make_button("Play", get_width() / 2 - 50, 370),
+                    make_button("Quit", get_width() / 2 + 50, 370),
+                       text("chocolate", "Created By: James Gatonye", 20, get_width()/2, 500, font_name = "Equinox"))
+
+def handle_title_buttons(world: TitleScreen):
+    """
+    When the buttons of the title screen are clicked, it redirects the user to either the start screen or permits the
+    user to quit the game.
+
+    Args:
+        world (TitleScreen): Composed of a background image, header, and two buttons.
+    """
+    if colliding_with_mouse(world.start_button.background):
+        change_scene("start")
+    if colliding_with_mouse(world.quit_button.background):
+        quit()
+
 def create_world() -> World:
     """
     Creates the world that contains everything
@@ -32,13 +92,21 @@ def create_world() -> World:
     Returns:
         World: The whole world
     """
-    return World(create_miner(), MINER_SPEED, [], [], [], [],
+    return World(create_background(), create_miner(), MINER_SPEED, [], [], [], [],
                 ROCK_MOVEMENT, 0, text("chocolate", "", 35, get_width()/2, 40, font_name = 'Equinox'),
                  display_lives([create_heart(), create_heart(), create_heart()])
                  ,0 , STARTING_TIME, text("chocolate", "", 30, get_width()/2,70, font_name = 'Equinox'),
                  ROCK_COUNTER)
 
+def create_background()-> DesignerObject:
+    """
+    Creates the background image of the volcano for the game
 
+    Return:
+        DesignerObject: The background image
+    """
+    background = image("Photos/background.png")
+    return background
 def create_miner() -> DesignerObject:
     """
     Creates the miner, increases his size and also sets
@@ -103,6 +171,7 @@ def flip_miner(world: World, key: str):
 
     Args:
         world (World): The Worlds Instance.
+        Key (str): Keyboard Strokes
     """
     if key == "left":
         head_left(world)
@@ -115,8 +184,8 @@ def create_foods() -> DesignerObject:
     Create food that spawns around on the same level of
     the miner at random intervals
 
-    Args:
-        world (World): The Worlds Instance.
+    Return:
+        DesignerObject: The imaging for the food that randomly spawns
     """
     food = image("Photos/kit.png")
     food.anchor = 'midbottom'
@@ -130,8 +199,8 @@ def create_coins() -> DesignerObject:
     Create coins that spawns around on the same level of
     the miner at random intervals that can be collected
 
-    Args:
-        world (World): The Worlds Instance.
+    Return:
+        DesignerObject: The imaging for the coins that randomly spawns
     """
     coin = image("Photos/coins.png")
     coin.anchor = 'midbottom'
@@ -144,8 +213,8 @@ def create_mushroom() -> DesignerObject:
     Create mushroom powerup that spawns around on the same level of
     the miner at random intervals that can be collected
 
-    Args:
-        world (World): The Worlds Instance.
+    Return:
+        DesignerObject: The imaging for the mushrooms that randomly spawn
     """
     mushroom = image("Photos/mushroom.png")
     mushroom.anchor = 'midbottom'
@@ -254,8 +323,8 @@ def create_heart() -> DesignerObject:
     """
     Creates the hearts displayed in the game
 
-    Args:
-        world (World): The Worlds Instance.
+    Return:
+        DesignerObject: The imaging for the heart that appear on screen
     """
     hearts = emoji("♥")
     hearts.scale_y = 0.8
@@ -269,8 +338,8 @@ def create_rock() -> DesignerObject:
     """
     Creates the rocks that fall from the sky at a certain scale
 
-    Args:
-        world (World): The Worlds Instance.
+    Return:
+        DesignerObject: The imaging for the rocks that randomly spawns
     """
     rock = image("Photos/rock.png")
     rock.scale_x = 1
@@ -366,10 +435,10 @@ def display_lives(lives: list[DesignerObject]) -> list[DesignerObject]:
     Displays the hearts all across the screen
 
     Args:
-        lives (list[DseignerObject): Displays the number of lives on screen.
+        lives (list[DesignerObject): Displays the number of lives on screen.
 
     Returns:
-        (list[DseignerObject): Updates the number of lives present on screen.
+        (list[DesignerObject): Updates the number of lives present on screen.
     """
     lives_screen = []
     offset = 0
@@ -405,19 +474,21 @@ def increase_rock_count(world: World):
         world.rock_movement = world.rock_movement + 1
 
 
-when('starting', create_world)
-when("updating", bounce_miner)
-when("typing", flip_miner)
-when("updating", make_foods)
-when("updating", eating_food)
-when("updating", make_coins)
-when("updating", collecting_coins)
-when("updating", make_mushroom)
-when("updating", eating_mushroom)
-when("updating", make_rock)
-when("updating", move_rock)
-when("updating", taking_damage)
-when("updating", update_score)
-when("updating", timer_updates)
-when("updating", increase_rock_count)
+when("starting: title", create_title_screen)
+when("clicking: title", handle_title_buttons)
+when('starting: start', create_world)
+when("updating: start", bounce_miner)
+when("typing: start", flip_miner)
+when("updating: start", make_foods)
+when("updating: start", eating_food)
+when("updating: start", make_coins)
+when("updating: start", collecting_coins)
+when("updating: start", make_mushroom)
+when("updating: start", eating_mushroom)
+when("updating: start", make_rock)
+when("updating: start", move_rock)
+when("updating: start", taking_damage)
+when("updating: start", update_score)
+when("updating: start", timer_updates)
+when("updating: start", increase_rock_count)
 start()
