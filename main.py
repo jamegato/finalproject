@@ -124,7 +124,7 @@ def create_miner() -> DesignerObject:
 
 def bounce_miner(world: World):
     """
-    Sets the boundaries of the miner, and prevents him by going off screen by introducing
+    Sets the boundaries of the miner, and prevents him by going offscreen by introducing
     a bounce feature to block him off
 
     Args:
@@ -139,7 +139,7 @@ def bounce_miner(world: World):
 def head_left(world: World):
     """
     Allows for the miner to move to the left
-    also controlls how fast he moves by having
+    also controls how fast he moves by having
     the * 2 next to the speed.
 
     Args:
@@ -225,7 +225,7 @@ def create_mushroom() -> DesignerObject:
 
 def make_foods(world: World):
     """
-    Controlls the amount of food being spawned
+    Controls the amount of food being spawned
     around in the game, restricting the amount to 2 max,
     also applying a 1/100 chance for it to spawn
 
@@ -463,7 +463,7 @@ def timer_updates(world: World):
 
 def increase_rock_count(world: World):
     """
-    Adds More rocks as time progresses inside of the game, also
+    Adds More rocks as time progresses inside the game, also
     makes them bigger and harder to dodge by extension
 
     Args:
