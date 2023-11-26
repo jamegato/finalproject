@@ -95,7 +95,7 @@ def create_world() -> World:
     return World(create_background(), create_miner(), MINER_SPEED, [], [], [], [],
                 ROCK_MOVEMENT, 0, text("chocolate", "", 35, get_width()/2, 40, font_name = 'Equinox'),
                  display_lives([create_heart(), create_heart(), create_heart()])
-                 ,0 , STARTING_TIME, text("chocolate", "", 30, get_width()/2,70, font_name = 'Equinox'),
+                 ,0, STARTING_TIME, text("chocolate", "", 30, get_width()/2,70, font_name = 'Equinox'),
                  ROCK_COUNTER)
 
 def create_background()-> DesignerObject:
@@ -113,7 +113,7 @@ def create_miner() -> DesignerObject:
     where he spawns in.
 
     Args:
-        world (World): The Worlds Instance.
+        world(World): The Worlds Instance.
     """
     miner = image("Photos/miner.png")
     set_scale(miner, 0.5)
@@ -153,7 +153,7 @@ def head_left(world: World):
 def head_right(world: World):
     """
     Allows for the miner to move to the right
-    also controlls how fast he moves by having
+    also controls how fast he moves by having
     the * 2 next to the speed
 
     Args:
@@ -171,7 +171,7 @@ def flip_miner(world: World, key: str):
 
     Args:
         world (World): The Worlds Instance.
-        Key (str): Keyboard Strokes
+        Key(str): Keyboard Strokes
     """
     if key == "left":
         head_left(world)
@@ -240,7 +240,7 @@ def make_foods(world: World):
 
 def make_coins(world: World):
     """
-    Controlls the amount of coin being spawned
+    Controls the amount of coin being spawned
     around in the game, restricting the amount to 1 max,
     also applying a 1/300 chance for it to spawn
 
@@ -254,7 +254,7 @@ def make_coins(world: World):
 
 def make_mushroom(world: World):
     """
-    Controlls the amount of mushrooms being spawned
+    Controls the amount of mushrooms being spawned
     around in the game, restricting the amount to 1 max,
     also applying a 1/300 chance for it to spawn
 
@@ -280,8 +280,8 @@ def eating_food(world: World):
     for food in world.food:
         if colliding(food, world.miner):
             eaten_food.append(food)
-            miner.scale_x += 0.15
-            miner.scale_y += 0.15
+            miner.scale_x += 0.35
+            miner.scale_y += 0.35
     world.food = filter_from(world.food, eaten_food)
 
 
@@ -314,8 +314,8 @@ def eating_mushroom(world: World):
     for mushroom in world.mushroom:
         if colliding(mushroom, world.miner):
             eaten_mushroom.append(mushroom)
-            miner.scale_x -= 0.1
-            miner.scale_y -= 0.1
+            miner.scale_x -= 0.2
+            miner.scale_y -= 0.2
     world.mushroom = filter_from(world.mushroom, eaten_mushroom)
 
 
@@ -408,7 +408,7 @@ def filter_from(old_objects: list[DesignerObject], destroyed_objects: list[Desig
          destroyed_objects: list[DesignerObject]): Destroys the objects after they have been collected
 
     Return:
-        list[DesignerObject]): Removes the objects from the screen after collision
+        list([DesignerObject]): Removes the objects from the screen after collision
     """
     objects = []
     for object in old_objects:
@@ -435,10 +435,10 @@ def display_lives(lives: list[DesignerObject]) -> list[DesignerObject]:
     Displays the hearts all across the screen
 
     Args:
-        lives (list[DesignerObject): Displays the number of lives on screen.
+        lives (list[DesignerObject]): Displays the number of lives on screen.
 
     Returns:
-        (list[DesignerObject): Updates the number of lives present on screen.
+        (list[DesignerObject]): Updates the number of lives present on screen.
     """
     lives_screen = []
     offset = 0
