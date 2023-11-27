@@ -30,3 +30,4 @@
 - [X] Game UI: Making the Game Look Pretty!
 - [X] Mini Mushroom: Add a power up that makes the miner become smaller after consuming it
 - [X] Difficulty Ramp Up: the game becomes harder as time progresses
+- [ ] Difficulty Selection: The Ability to pick and choose difficulty changing the game experience completely
