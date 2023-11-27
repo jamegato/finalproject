@@ -112,8 +112,8 @@ def create_miner() -> DesignerObject:
     Creates the miner, increases his size and also sets
     where he spawns in.
 
-    Args:
-        world(World): The Worlds Instance.
+    return:
+        DesignerObject: Creates the miner image
     """
     miner = image("Photos/miner.png")
     set_scale(miner, 0.5)
@@ -171,7 +171,7 @@ def flip_miner(world: World, key: str):
 
     Args:
         world (World): The Worlds Instance.
-        Key(str): Keyboard Strokes
+        key(str): Keyboard Strokes
     """
     if key == "left":
         head_left(world)
@@ -280,8 +280,8 @@ def eating_food(world: World):
     for food in world.food:
         if colliding(food, world.miner):
             eaten_food.append(food)
-            miner.scale_x += 0.35
-            miner.scale_y += 0.35
+            miner.scale_x += 0.15
+            miner.scale_y += 0.15
     world.food = filter_from(world.food, eaten_food)
 
 
@@ -314,8 +314,8 @@ def eating_mushroom(world: World):
     for mushroom in world.mushroom:
         if colliding(mushroom, world.miner):
             eaten_mushroom.append(mushroom)
-            miner.scale_x -= 0.2
-            miner.scale_y -= 0.2
+            miner.scale_x -= 0.1
+            miner.scale_y -= 0.1
     world.mushroom = filter_from(world.mushroom, eaten_mushroom)
 
 
@@ -470,8 +470,8 @@ def increase_rock_count(world: World):
         world (World): The Worlds Instance.
     """
     if world.unit % 1200 == 0:
-        world.rock_count = world.rock_count + 1
-        world.rock_movement = world.rock_movement + 1
+        world.rock_count = world.rock_count + 2
+        world.rock_movement = world.rock_movement + 2
 
 
 when("starting: title", create_title_screen)
