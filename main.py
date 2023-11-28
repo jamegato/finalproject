@@ -5,8 +5,8 @@ from random import randint
 
 MINER_SPEED = 50
 STARTING_TIME = 60
-ROCK_MOVEMENT = 5
-ROCK_COUNTER = 3
+ROCK_MOVEMENT = 6
+ROCK_COUNTER = 5
 
 @dataclass
 class Button:
@@ -233,7 +233,7 @@ def make_foods(world: World):
         world (World): The Worlds Instance.
     """
     not_too_many_foods = len(world.food) < 3
-    random_chance = randint(1, 100) == 1
+    random_chance = randint(1, 300) == 1
     if (not_too_many_foods and random_chance):
         world.food.append(create_foods())
 
@@ -280,8 +280,8 @@ def eating_food(world: World):
     for food in world.food:
         if colliding(food, world.miner):
             eaten_food.append(food)
-            miner.scale_x += 0.15
-            miner.scale_y += 0.15
+            miner.scale_x += 0.1
+            miner.scale_y += 0.1
     world.food = filter_from(world.food, eaten_food)
 
 
@@ -472,7 +472,7 @@ def difficulty_ramp_up(world: World):
     if world.unit % 1200 == 0:
         world.rock_count = world.rock_count + 2
         world.rock_movement = world.rock_movement + 2
-        world.miner_speed = world.miner_speed - 10
+        world.miner_speed = world.miner_speed - 20
 
 
 when("starting: title", create_title_screen)
