@@ -474,7 +474,6 @@ def difficulty_ramp_up(world: World):
         world.rock_movement = world.rock_movement + 2
         world.miner_speed = world.miner_speed - 20
 
-
 when("starting: title", create_title_screen)
 when("clicking: title", handle_title_buttons)
 when('starting: start', create_world)
