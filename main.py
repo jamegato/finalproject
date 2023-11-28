@@ -461,7 +461,7 @@ def timer_updates(world: World):
         world.seconds -= 1
     world.timer.text = "Time Remaining: " + str(world.seconds)
 
-def increase_rock_count(world: World):
+def difficulty_ramp_up(world: World):
     """
     Adds More rocks as time progresses inside the game, also
     makes them bigger and harder to dodge by extension
@@ -472,6 +472,7 @@ def increase_rock_count(world: World):
     if world.unit % 1200 == 0:
         world.rock_count = world.rock_count + 2
         world.rock_movement = world.rock_movement + 2
+        world.miner_speed = world.miner_speed - 10
 
 
 when("starting: title", create_title_screen)
@@ -490,5 +491,5 @@ when("updating: start", move_rock)
 when("updating: start", taking_damage)
 when("updating: start", update_score)
 when("updating: start", timer_updates)
-when("updating: start", increase_rock_count)
+when("updating: start", difficulty_ramp_up)
 start()
