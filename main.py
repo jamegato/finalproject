@@ -280,8 +280,8 @@ def eating_food(world: World):
     for food in world.food:
         if colliding(food, world.miner):
             eaten_food.append(food)
-            miner.scale_x += 0.1
-            miner.scale_y += 0.1
+            miner.scale_x += 0.14
+            miner.scale_y += 0.14
     world.food = filter_from(world.food, eaten_food)
 
 
@@ -291,7 +291,7 @@ def collecting_coins(world: World):
     will update and time will be added.
 
     Args:
-         world (World): The Worlds Instance.
+         world (World): The Worls Instance.
     """
     collected_coins = []
     miner = world.miner
@@ -314,8 +314,8 @@ def eating_mushroom(world: World):
     for mushroom in world.mushroom:
         if colliding(mushroom, world.miner):
             eaten_mushroom.append(mushroom)
-            miner.scale_x -= 0.1
-            miner.scale_y -= 0.1
+            miner.scale_x -= 0.05
+            miner.scale_y -= 0.05
     world.mushroom = filter_from(world.mushroom, eaten_mushroom)
 
 
