@@ -2,9 +2,6 @@
 |---------------|-------------------|
 | James Gatonye | jamegato@udel.edu |
 ---
-# Game Videos
-- Milestone 1: https://youtu.be/mRY9o0grM6I
-- Milestone 2: https://youtu.be/z4aX2MOs_PU
 
 ---
 # Miner Dance
@@ -45,5 +42,9 @@ Using W to move left and D to move right respectively dodge the rocks falling do
 - [X] Game UI: Making the Game Look Pretty!
 - [X] Mini Mushroom: Add a power up that makes the miner become smaller after consuming it
 - [X] Difficulty Ramp Up: The game becomes harder as time progresses
+
+# Game Videos
+- Milestone 1: https://youtu.be/mRY9o0grM6I
+- Milestone 2: https://youtu.be/z4aX2MOs_PU
 
 # Acknowledgements
