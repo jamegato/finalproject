@@ -25,8 +25,8 @@
 ## Phase 3:
 - [X] Play Button: A play button and home screen should be displayed that takes you into the game 
 - [X] Power Ups: Power Ups should spawn around that increase player speed and also give them more health 
-- [ ] Game Win : A message is displayed when the player runs out of time , or some other visual indicator that the player has Won.
-- [ ] Game Over: A message is displayed when the player runs out of lives, or some other visual indicator that the player has lost.
+- [X] Game Win : A message is displayed when the player runs out of time , or some other visual indicator that the player has Won.
+- [X] Game Over: A message is displayed when the player runs out of lives, or some other visual indicator that the player has lost.
 - [X] Game UI: Making the Game Look Pretty!
 - [X] Mini Mushroom: Add a power up that makes the miner become smaller after consuming it
 - [X] Difficulty Ramp Up: The game becomes harder as time progresses
