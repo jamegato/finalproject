@@ -202,9 +202,9 @@ def flip_miner(world: World, key: str):
         world (World): The Worlds Instance.
         key(str): Keyboard Strokes
     """
-    if key == "left":
+    if key == "a":
         head_left(world)
-    elif key == "right":
+    elif key == "d":
         head_right(world)
 
 
@@ -257,7 +257,7 @@ def make_foods(world: World):
     """
     Controls the amount of food being spawned
     around in the game, restricting the amount to 2 max,
-    also applying a 1/100 chance for it to spawn
+    also applying a 1/300 chance for it to spawn
 
     Args:
         world (World): The Worlds Instance.
@@ -272,13 +272,13 @@ def make_coins(world: World):
     """
     Controls the amount of coin being spawned
     around in the game, restricting the amount to 1 max,
-    also applying a 1/300 chance for it to spawn
+    also applying a 1/100 chance for it to spawn
 
     Args:
         world (World): The Worlds Instance.
     """
     not_too_many_coins = len(world.coin) < 2
-    random_chance = randint(1, 200) == 1
+    random_chance = randint(1, 100) == 1
     if (not_too_many_coins and random_chance):
         world.coin.append(create_coins())
 
@@ -287,13 +287,13 @@ def make_mushroom(world: World):
     """
     Controls the amount of mushrooms being spawned
     around in the game, restricting the amount to 1 max,
-    also applying a 1/300 chance for it to spawn
+    also applying a 1/200 chance for it to spawn
 
     Args:
         world (World): The Worlds Instance.
     """
     not_too_many_mushrooms = len(world.mushroom) < 1
-    random_chance = randint(1, 300) == 1
+    random_chance = randint(1, 200) == 1
     if (not_too_many_mushrooms and random_chance):
         world.mushroom.append(create_mushroom())
 
@@ -313,6 +313,7 @@ def eating_food(world: World):
             eaten_food.append(food)
             miner.scale_x += 0.14
             miner.scale_y += 0.14
+            world.miner_speed = world.miner_speed + 2
     world.food = filter_from(world.food, eaten_food)
 
 
@@ -329,7 +330,7 @@ def collecting_coins(world: World):
     for coin in world.coin:
         if colliding(coin, world.miner):
             collected_coins.append(coin)
-            world.score += 20
+            world.score += 50
     world.coin = filter_from(world.coin, collected_coins)
 
 
@@ -496,7 +497,7 @@ def game_over(world: World):
 
 def game_won(world: World):
     """
-    Triggers the game end screen whenever the players time reaches 0,
+    Triggers the game win screen whenever the players time reaches 0,
     this function will continuously check during the duration of the game
 
     Args:
@@ -528,7 +529,7 @@ def create_game_over_screen(score: int) -> GameOverScreen:
 
 def create_game_won_screen(score: int) -> GameWonScreen:
     """
-    Creates the game over screen whenever certain conditions are met within
+    Creates the game won screen whenever certain conditions are met within
     the games parameters like time is completely done
 
     Args:
