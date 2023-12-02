@@ -437,8 +437,8 @@ def filter_from(old_objects: list[DesignerObject], destroyed_objects: list[Desig
     Removes Collected Items and destroys objects from the screen
 
     Args:
-        (old_objects: list[DesignerObject]): The old objects on screen after they have been collected
-         destroyed_objects: list([DesignerObject]): Destroys the objects after they have been collected
+        old_objects: list[DesignerObject]: The old objects on screen after they have been collected
+        destroyed_objects: list([DesignerObject]): Destroys the objects after they have been collected
 
     Return:
         list([DesignerObject]): Removes the objects from the screen after collision
@@ -519,7 +519,8 @@ def create_game_over_screen(score: int) -> GameOverScreen:
     Returns:
         GameOverScreen: Composed of a background image, header, game statistics, and a home button.
     """
-    return GameOverScreen(background_image("Photos/game_over.png"),text("chocolate", "Game Over!", 60, get_width() / 2, 180, font_name='Equinox'),
+    return GameOverScreen(background_image("Photos/game_over.png"),
+                          text("chocolate", "Game Over!", 60, get_width() / 2, 180, font_name='Equinox'),
                           text("chocolate", "Final Score: " + str(score), 35, get_width() / 2, 245,
                                font_name='Equinox'),
                           make_button("Try Again?", get_width() / 2, 380),
@@ -537,7 +538,8 @@ def create_game_won_screen(score: int) -> GameWonScreen:
     Returns:
         GameWonScreen: Composed of a background image, header, game statistics, and a home button.
     """
-    return GameWonScreen(background_image("Photos/game_win.png"),text("chocolate", "You Win!", 60, get_width() / 2, 180, font_name='Equinox'),
+    return GameWonScreen(background_image("Photos/game_win.png"),
+                         text("chocolate", "You Win!", 60, get_width() / 2, 180, font_name='Equinox'),
                          text("chocolate", "Final Score: " + str(score), 35, get_width() / 2, 245,
                               font_name='Equinox'),
                          make_button("Play Again?", get_width() / 2, 380),
@@ -625,4 +627,3 @@ when("starting: win", create_game_won_screen)
 when("clicking: loss", handle_game_over_button)
 when("clicking: win", handle_game_won_button)
 start()
-
