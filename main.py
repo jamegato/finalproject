@@ -18,7 +18,7 @@ class Button:
 
 @dataclass
 class GameOverScreen:
-    # background: DesignerObject
+    background: DesignerObject
     header: DesignerObject
     score: DesignerObject
     try_again_button: Button
@@ -27,7 +27,7 @@ class GameOverScreen:
 
 @dataclass
 class GameWonScreen:
-    # background: DesignerObject
+    background: DesignerObject
     header: DesignerObject
     score: DesignerObject
     play_again_button: Button
@@ -515,16 +515,15 @@ def create_game_over_screen(score: int) -> GameOverScreen:
 
     Args:
         score (int): Player's score.
-        no_more_lives (int): Number of player's remaining hearts.
 
     Returns:
         GameOverScreen: Composed of a background image, header, game statistics, and a home button.
     """
-    return GameOverScreen(text("navy", "Game Over!", 60, get_width() / 2, 180, font_name='Equinox'),
-                          text("navy", "Final Score: " + str(score), 35, get_width() / 2, 245,
+    return GameOverScreen(background_image("Photos/game_over.png"),text("chocolate", "Game Over!", 60, get_width() / 2, 180, font_name='Equinox'),
+                          text("chocolate", "Final Score: " + str(score), 35, get_width() / 2, 245,
                                font_name='Equinox'),
                           make_button("Try Again?", get_width() / 2, 380),
-                          make_button("Exit Game", get_width() / 2, 430))
+                          make_button("Return to Main Menu", get_width() / 2, 430))
 
 
 def create_game_won_screen(score: int) -> GameWonScreen:
@@ -534,16 +533,15 @@ def create_game_won_screen(score: int) -> GameWonScreen:
 
     Args:
         score (int): Player's score.
-        no_more_time (int): Number of time remaining in the game.
 
     Returns:
         GameWonScreen: Composed of a background image, header, game statistics, and a home button.
     """
-    return GameWonScreen(text("navy", "You Win!", 60, get_width() / 2, 180, font_name='Equinox'),
-                         text("navy", "Final Score: " + str(score), 35, get_width() / 2, 245,
+    return GameWonScreen(background_image("Photos/game_win.png"),text("chocolate", "You Win!", 60, get_width() / 2, 180, font_name='Equinox'),
+                         text("chocolate", "Final Score: " + str(score), 35, get_width() / 2, 245,
                               font_name='Equinox'),
                          make_button("Play Again?", get_width() / 2, 380),
-                         make_button("Exit Game", get_width() / 2, 430))
+                         make_button("Return to Main Menu", get_width() / 2, 430))
 
 
 def handle_game_over_button(world: GameOverScreen):
