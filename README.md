@@ -15,7 +15,7 @@ Miner Dance is a game involving a Miner stuck on top of a Volcano, that is taske
 ---
 Using W to move left and D to move right respectively dodge the rocks falling down on the screen and collect items using the movement.
 
-| Sprite                                      | Item Representation                                        |
+| Sprite                                      | Representation                                             |
 |---------------------------------------------|------------------------------------------------------------|
 | <img src="Photos/miner.png" height="60">    | The Player model to be controlled                          |
 | <img src="Photos/coins.png" height="60">    | Coins to be collected that <br/>Increase the players score |
