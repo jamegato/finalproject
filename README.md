@@ -6,7 +6,7 @@ In Miner Dance, the player starts out as a small miner trapped on top of a volca
 ## About
 
 ---
-Miner Dance is a game involving a Miner stuck on top of a Volcano, that is tasked with dodging debris that is being shot out of the volcano, collecting coins to try and rack up as many points as possible, using mushrooms to decrease in size to make the game easier, and collecting med kits to increase size and speed so you can dodge more effectively. 
+Miner Dance is a game involving a Miner stuck on top of a Volcano, that is tasked with dodging debris that is being shot out of the volcano, collecting coins to try and rack up as many points as possible, using mushrooms to decrease in size to make the game easier, and collecting med kits to increase size and speed, so you can dodge more effectively. 
 ### [Game Preview](https://youtu.be/4Ko2sXoe97A)
 
 
@@ -15,6 +15,13 @@ Miner Dance is a game involving a Miner stuck on top of a Volcano, that is taske
 ---
 Using W to move left and D to move right respectively dodge the rocks falling down on the screen and collect items using the movement.
 
+| Sprite                                      | Item Representation                                        |
+|---------------------------------------------|------------------------------------------------------------|
+| <img src="Photos/miner.png" height="60">    | The Player model to be controlled                          |
+| <img src="Photos/coins.png" height="60">    | Coins to be collected that <br/>Increase the players score |
+| <img src="Photos/rock.png" height="40">     | Rocks falling from the sky that<br/>need to be dodged      |
+| <img src="Photos/kit.png" height="60">      | Makes the miner bigger and<br/> also makes them faster     |
+| <img src="Photos/mushroom.png" height="60"> | Makes the miner smaller so it<br/>is easier to dodge       |
 
 ## Authors
 
@@ -27,11 +34,12 @@ Using W to move left and D to move right respectively dodge the rocks falling do
 ## Acknowledgements
 
 ---
-| Website Link                                                                                                                                                          | Reasoning                                                                                        |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
-| [Designer Guide List](https://designer-edu.github.io/designer/contents.html#)                                                                                         | Help with screens, collisions, falling objects and destroying things                             |
-| [Stack Overflow Data Class Help](https://stackoverflow.com/questions/53632152/why-cant-dataclasses-have-mutable-defaults-in-their-class-attributes-declaratio)        | Needed help with getting lives and scores to translate across screens and outside of dataclasses |
-| [Github Formatting ](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/quickstart-for-writing-on-github) | Helping me set up the README.md file                                                             |
+| Website Link                                                                                                                                                             | Reasoning                                                                                        |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| [Designer Guide List](https://designer-edu.github.io/designer/contents.html#)                                                                                            | Help with screens, collisions, falling objects and destroying things                             |
+| [Github Formatting ](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/quickstart-for-writing-on-github)    | Helping me set up the README.md file                                                             |
+| [Stack Overflow Data Class Help](https://stackoverflow.com/questions/53632152/why-cant-dataclasses-have-mutable-defaults-in-their-class-attributes-declaratio)           | Needed help with getting lives and scores to translate across screens and outside of dataclasses |
+| [Stack Overflow Adding Images  ](https://stackoverflow.com/questions/59738918/how-do-i-add-image-to-readme-file-on-gitlab)                                               | Needed help on adding images to my README.md file for this project                               |
  -------------------------------------------
 
 ## [Phase 1](https://youtu.be/gazHs2fcIjA): 

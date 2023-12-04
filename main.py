@@ -5,7 +5,7 @@ from random import randint
 MINER_SPEED = 50
 STARTING_TIME = 60
 ROCK_MOVEMENT = 6
-ROCK_COUNTER = 5
+ROCK_COUNTER = 6
 ROCK_SIZE = 1
 
 
